@@ -1,0 +1,143 @@
+<!-- edit_template.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f8f8f8;
+            padding-top: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .alert {
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        button {
+            background-color: #337ab7;
+            color: #fff;
+        }
+
+        /* Additional styles for consistency with the index page */
+        .row {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5),
+                        0 6px 20px 0 rgba(0, 0, 0, 0.39);
+            background: lightpink;
+            margin-bottom: 5%;
+            border-radius: 25px;
+            padding: 2%;
+            overflow: auto;
+            resize: both;
+            text-overflow: ellipsis;
+        }
+
+        .card:hover {
+            background: lightblue;
+        }
+
+        .submit_form {
+            text-align: center;
+            padding: 3%;
+            background: pink;
+            border-radius: 25px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4),
+                        0 6px 20px 0 rgba(0, 0, 0, 0.36);
+        }
+
+        .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5),
+                0 6px 20px 0 rgba(0,0,0,0.39);
+    background: lightpink;
+    margin-bottom : 5%;
+    border-radius: 25px;
+    padding : 2%;
+    overflow: auto;
+    resize: both;
+    text-overflow: ellipsis;
+}
+.card:hover{
+    background: lightblue;
+}
+
+.submit_form{
+    text-align: center;
+    padding: 3%;
+    background: pink;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4),
+                0 6px 20px 0 rgba(0,0,0,0.36);
+}
+    </style>
+</head>
+
+<body class="container">
+
+    <h1>Edit Task</h1>
+    <!-- Edit task form -->
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Title field -->
+        <div class="form-group">
+            <label for="{{ forms.title.id_for_label }}">Title:</label>
+            <input type="text" class="form-control" id="{{ forms.title.id_for_label }}" name="{{ forms.title.name }}" value="{{ task.title }}">
+        </div>
+        <!-- Date field -->
+<div class="form-group">
+    <label for="{{ forms.date.id_for_label }}">Date:</label>
+    <input type="date" class="form-control" id="{{ forms.date.id_for_label }}" name="{{ forms.date.name }}" value="{{ forms.date.value }}">
+</div>
+
+
+        <!-- Details field -->
+        <div class="form-group">
+            <label for="{{ forms.details.id_for_label }}">Details:</label>
+            <textarea class="form-control" id="{{ forms.details.id_for_label }}" name="{{ forms.details.name }}">{{ task.details }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Task</button>
+    </form>
+
+</body>
+
+</html>
